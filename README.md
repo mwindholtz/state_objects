@@ -62,15 +62,15 @@ TODO: there may be typos in the following.  It should be cleared up when I move 
   returns a array of 2-value arrays suitable to fill a select tag
   The second example shows how to start the selection on a blank
     
-     <%= select :walk_light, :color_state, Article.color_states %>
-     <%= select :walk_light, :color_state,  [['','']] + Article.color_states %>
+     <%= select :walk_light, :color_state, WalkLight.color_states %>
+     <%= select :walk_light, :color_state,  [['','']] + WalkLight.color_states %>
     
-     assert_equal  ["MS-Word", "PDF", "HTML"],   Article.color_state_hash.values
-     assert_equal "['MS-Word', 'PDF', 'HTML']",  Article.color_state_js_list
+     assert_equal  ['Walk', 'Don\'t Walk'],   WalkLight.color_state_hash.values
+     assert_equal "['Walk', 'Don\'t Walk']",  WalkLight.color_state_js_list
     
     color_state_symbols  #  returns hash of symbols
 
-adds the following INSTANCE METHODS to Article
+adds the following INSTANCE METHODS to WalkLight
 
     color_state_hash
     color_state #  returns the single character value as in the db    
