@@ -24,9 +24,15 @@ Or install it yourself as:
 
 ## Usage
 
-
+    class WalkLights < ActiveRecord::Migration
+      def self.change
+        create_table :walk_lights do |t|
+          t.string :color_state, :default => LightRedState.db_value
+        end
+    end
+    
     class LightRedState  < StateObjects::Base
-      state_object_values :red, 'R', "Don't Walk" 
+      state_object_values :red, 'R', "Dont Walk" 
       def change
         model.color_state_green!
         model.save!    
@@ -52,7 +58,12 @@ Or install it yourself as:
       scope :green, where("color_state = #{LightGreenState.db_value}" )    
     end
 
+    # now lets use it 
     north_south_elm_300_block = WalkLight.create(color_state: LightRedState.db_value)
+    while (true)
+      pause rand(200)  # keep the pedestrians guessing :-)
+      north_south_elm_300_block.change
+    end
 
 ### adds the following CLASS METHODS to WalkLight
 
@@ -65,8 +76,8 @@ TODO: there may be typos in the following.  It should be cleared up when I move 
      <%= select :walk_light, :color_state, WalkLight.color_states %>
      <%= select :walk_light, :color_state,  [['','']] + WalkLight.color_states %>
     
-     assert_equal  ['Walk', 'Don\'t Walk'],   WalkLight.color_state_hash.values
-     assert_equal "['Walk', 'Don\'t Walk']",  WalkLight.color_state_js_list
+     assert_equal  ['Walk', 'Dont Walk'],   WalkLight.color_state_hash.values
+     assert_equal "['Walk', 'Dont Walk']",  WalkLight.color_state_js_list
     
     color_state_symbols  #  returns hash of symbols
 
@@ -78,7 +89,7 @@ adds the following INSTANCE METHODS to WalkLight
     color_state_symbol  # returns the current values symbol
 
 * methods ending in '?' return boolean if the value is set
-* methods ending in '!' set the value
+* methods ending in '!' set the value ( this does NOT save the model)
   
     color_state_red?  
     color_state_red! 
@@ -90,13 +101,14 @@ adds the following INSTANCE METHODS to WalkLight
 
     walk_light = WalkLight.build(color_state: LightGreenState.db_value)
     walk_light.color_state_red!
-    assert_equal 'R',          walk_light.color_state
-    assert_equal :red,         walk_light.file_type_symbol
-    assert_equal true,         walk_light.color_state_red?
-    assert_equal "Don't Walk", walk_light.color_state_label
-    assert_equal [["Walk", "G"], ["Don't Walk", "R"]], WalkLight.color_states
-    assert_equal({"G"=>"Walk", "R"=>"Don't Walk",},    WalkLight.color_state_hash) 
-    assert_equals({'G'=>:green, 'R'=>:red },           WalkLight.color_state_symbols) 
+    assert_equal 'R',                walk_light.color_state
+    assert_equal :red,               walk_light.color_state_symbol
+    assert_equal true,               walk_light.color_state_red?
+    assert_equal "Dont Walk",        walk_light.color_state_label
+    
+    assert_equal [["Walk", "G"], ["Dont Walk", "R"]], WalkLight.color_states
+    assert_equal({"G"=>"Walk", "R"=>"Dont Walk",},    WalkLight.color_state_hash) 
+    assert_equals({'G'=>:green, 'R'=>:red },          WalkLight.color_state_symbols) 
     
 ### Example #2: Selection list
 
@@ -106,14 +118,13 @@ adds the following INSTANCE METHODS to WalkLight
 ### Example #3: Radio button labels
 
     <% WalkLight.color_state_hash.each do | key, value | %>
-        <%=  radio_button :walk_light, :payment_method_option, key %> <%= value %><br />
+        <%=  radio_button :walk_light, :color_state, key %> <%= value %><br />
     <% end %>
     
 
 ### Example #4 in a java_script list
 
     color_state_js_list
-
 
     
 ## Contributing
