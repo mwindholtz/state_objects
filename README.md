@@ -20,6 +20,11 @@ Or install it yourself as:
 
 This is a State Machine implementation based on the http://en.wikipedia.org/wiki/State_pattern
 From the classic book http://en.wikipedia.org/wiki/Design_Patterns
+Each state is a separate class.
+You can add methods to the state classes, but each state class must have implement the same list of methods.
+State transitions are the responsibility of the state classes.
+
+Since this was extracted from an application, the specs are currently still in the main application.  I will move the specs to this gem as soon as possible.
 
     class LightRedState  < StateObjects::Base
       state_object_values :red, 'R', "Don't Walk" 
