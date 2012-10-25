@@ -52,7 +52,7 @@ Or install it yourself as:
       state_objects :color_state,
          LightGreenState,
          LightRedState 
-      state_object_methods :change
+      state_object_events :change
                                                                                        
       scope :red,   where("color_state = #{LightRedState.db_value}" )    
       scope :green, where("color_state = #{LightGreenState.db_value}" )    

@@ -1,9 +1,9 @@
 module StateObjects
   module ModelAdditions  
     
-    def state_object_methods(id,*methods)  # :nodoc:
+    def state_object_events(id,*methods)  # :nodoc:
       unless self.respond_to?("#{id}_klasses")
-        raise "Invalid call sequence. #state_objects must be defined before #state_object_methods"
+        raise "Invalid call sequence. #state_objects must be defined before #state_object_events"
       end                     
 
       # check methods on State classes      
@@ -23,7 +23,7 @@ module StateObjects
           end
         EOF1
       end 
-    end # state_object_methods
+    end # state_object_events
   
     def state_objects(id, *opts)  # :nodoc:
       id = id.to_s
