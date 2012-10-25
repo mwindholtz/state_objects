@@ -1,5 +1,3 @@
 require "state_objects/version"
-
-module StateObjects
-  # Your code goes here...
-end
+require "state_objects/model_additions"
+require "state_objects/base"
