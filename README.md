@@ -18,7 +18,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This is a State Machine implementation based on the http://en.wikipedia.org/wiki/State_pattern
+From the classic book http://en.wikipedia.org/wiki/Design_Patterns
+
+    class LightRedState  < StateObjects::Base
+      state_object_values :red, 'R', "Don't Walk" 
+      def change
+        model.color_state_green!
+        model.save!    
+      end  
+    end        
+    
+    class LightGreenState  < StateObjects::Base
+      state_object_values :green, 'G', 'Walk' 
+      def change
+        model.color_state_red!
+        model.save!    
+      end  
+    end        
+    
+    class WalkLight < ActiveRecord::Base
+      extend StateObjects::ModelAdditions
+      state_objects :color_state,
+         LightGreenState,
+         LightRedState 
+      state_object_methods :change
+    
+    end
 
 ## Contributing
 
