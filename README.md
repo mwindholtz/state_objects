@@ -8,6 +8,11 @@ State transitions are the responsibility of the state classes.
 
 Since this was extracted from an application, the specs are currently still in the main application.  I will move the specs to this gem as soon as possible.
 
+## Focus
+Many state machines focus on events and state transitions.
+The main benefit of this gem is to reduce conditional logic by removing #if checks in the model and moving the logic into the state objects. Using Composition in this way can go a long way to simplify Rails models.
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
