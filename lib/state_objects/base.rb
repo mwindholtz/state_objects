@@ -13,6 +13,9 @@ module StateObjects
         def self.db_value
           '#{opts[1]}'
         end
+        def self.where
+          "(status_option ='#{opts[1]}')"
+        end
         def self.label
           '#{opts[2]}'
         end

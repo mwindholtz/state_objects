@@ -24,6 +24,8 @@ module StateObjects
         EOF1
       end 
     end # state_object_events
+    alias state_object_accessors state_object_events 
+    alias state_object_mutators  state_object_events 
   
     def state_objects(id, *opts)  # :nodoc:
       id = id.to_s
