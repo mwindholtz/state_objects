@@ -1,4 +1,4 @@
-## ruby -Itest -Ilib test/state_options_test.rb
+## ruby -Itest -Ilib test/state_objects_methods_test.rb
 require 'test_helper'
 
 #
