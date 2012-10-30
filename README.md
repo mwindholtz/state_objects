@@ -52,7 +52,7 @@ Or install it yourself as:
       state_objects :color_state,
          LightGreenState,
          LightRedState 
-      state_object_events :change
+      state_object_events :color_state, :change
                                                                                        
       scope :red,   where("color_state = #{LightRedState.db_value}" )    
       scope :green, where("color_state = #{LightGreenState.db_value}" )    
@@ -76,14 +76,11 @@ TODO: there may be typos in the following.  It should be cleared up when I move 
      <%= select :walk_light, :color_state, WalkLight.color_states %>
      <%= select :walk_light, :color_state,  [['','']] + WalkLight.color_states %>
     
-     assert_equal  ['Walk', 'Dont Walk'],   WalkLight.color_state_hash.values
      assert_equal "['Walk', 'Dont Walk']",  WalkLight.color_state_js_list
     
-    color_state_symbols  #  returns hash of symbols
 
 adds the following INSTANCE METHODS to WalkLight
 
-    color_state_hash
     color_state #  returns the single character value as in the db    
     color_state_label  # returns the current values label    
     color_state_symbol  # returns the current values symbol
@@ -107,8 +104,6 @@ adds the following INSTANCE METHODS to WalkLight
     assert_equal "Dont Walk",        walk_light.color_state_label
     
     assert_equal [["Walk", "G"], ["Dont Walk", "R"]], WalkLight.color_states
-    assert_equal({"G"=>"Walk", "R"=>"Dont Walk",},    WalkLight.color_state_hash) 
-    assert_equals({'G'=>:green, 'R'=>:red },          WalkLight.color_state_symbols) 
     
 ### Example #2: Selection list
 
