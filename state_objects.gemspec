@@ -10,7 +10,8 @@ Gem::Specification.new do |gem|
   gem.email         = ["windholtz@gmail.com"]
   gem.homepage      = "https://github.com/mwindholtz/state_objects"
   gem.summary       = %q{ 'State' Design Pattern from the Gang of Four book }
-  gem.description   = %q{ 'State' Design Pattern from the Gang of Four book }
+  gem.description   = %q{ 'State' Design Pattern from the Gang of Four book.  Many other state machines focus on events and transitions.  This state machine focuses on behavior and reducing conditional logic.
+   }
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

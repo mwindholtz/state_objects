@@ -6,10 +6,9 @@ Each state is a separate class.
 You can add methods to the state classes, but each state class must have implement the same list of methods.
 State transitions are the responsibility of the state classes.
 
-Since this was extracted from an application, the specs are currently still in the main application.  I will move the specs to this gem as soon as possible.
-
 ## Focus
-Many state machines focus on events and state transitions.
+Many other state machines focus on events and state transitions.
+This state machine focuses on behavior.
 The main benefit of this gem is to reduce conditional logic by removing #if checks in the model and moving the logic into the state objects. Using Composition in this way can go a long way to simplify Rails models.
 
 
