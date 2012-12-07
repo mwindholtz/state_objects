@@ -58,8 +58,8 @@ Or install it yourself as:
          LightRedState 
       state_object_events :color_state, :change
                                                                                        
-      scope :red,   where("color_state = #{LightRedState.db_value}" )    
-      scope :green, where("color_state = #{LightGreenState.db_value}" )    
+      scope :red,   where(LightRedState.occurs )    
+      scope :green, where(LightGreenState.occurs )    
     end
 
     # now lets use it 
@@ -70,8 +70,6 @@ Or install it yourself as:
     end
 
 ### adds the following CLASS METHODS to WalkLight
-
-TODO: there may be typos in the following.  It should be cleared up when I move the specs into the gem.
 
 * color_states
   returns a array of 2-value arrays suitable to fill a select tag
@@ -120,11 +118,11 @@ adds the following INSTANCE METHODS to WalkLight
         <%=  radio_button :walk_light, :color_state, key %> <%= value %><br />
     <% end %>
     
+### Example #4:  adding scope with #occurs
+It's now easy to add scopes with using StateObjects#occurs, which will generate your where statement for you.
 
-### Example #4 in a java_script list
-
-    color_state_js_list
-
+   scope :red,   where(LightRedState.occurs )     # => "(status_option ='R')"
+   scope :green, where(LightGreenState.occurs )   # => "(status_option ='G')"      
     
 ## Contributing
 

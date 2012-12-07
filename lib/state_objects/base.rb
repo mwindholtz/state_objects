@@ -13,7 +13,7 @@ module StateObjects
         def self.db_value
           '#{opts[1]}'
         end
-        def self.where
+        def self.occurs
           "(status_option ='#{opts[1]}')"
         end
         def self.label

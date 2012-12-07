@@ -1,3 +1,6 @@
+## v0.0.5
+*  Added StateObjects#occurs
+
 ## v0.0.4
 * Changed Gem description to focus state that Many other state machines focus on events and state transitions.
 This state machine focuses on behavior.

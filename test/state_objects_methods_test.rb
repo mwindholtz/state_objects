@@ -67,6 +67,26 @@ class StateObjectsTest < Test::Unit::TestCase
     assert target.color_state_red?
   end
 
+  def test_state_objects_occurs
+    assert_equal "(status_option ='G')", LightGreenState.occurs
+    assert_equal "(status_option ='R')", LightRedState.occurs
+  end
+
+  def test_state_objects_db_value
+    assert_equal 'G', LightGreenState.db_value
+    assert_equal 'R', LightRedState.db_value
+  end
+
+  def test_state_objects_label
+    assert_equal "Walk", LightGreenState.label
+    assert_equal "Dont Walk", LightRedState.label
+  end
+
+  def test_state_objects_symbol
+    assert_equal :green, LightGreenState.symbol
+    assert_equal :red, LightRedState.symbol
+  end
+
   def test_sibling_of_target_not_effected_by_class_methods
       SiblingOfModelUnderTest.payment_method_options
       flunk "Should throw Exception" 
