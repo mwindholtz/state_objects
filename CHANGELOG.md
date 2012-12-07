@@ -1,6 +1,9 @@
+## 0.0.7
+  Fixed typos
+  
 ## 0.0.6
 * adding scope with _occurs.  For example:
-  scope :red,   where(WalkLight.color_state_red_occurs )     # => "(status_option ='R')"  
+  scope :red,   where(WalkLight.color_state_red_occurs )     # => "(color_state ='R')"  
 
 ## v0.0.5
 *  (Yanked)

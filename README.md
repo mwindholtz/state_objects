@@ -120,9 +120,8 @@ adds the following INSTANCE METHODS to WalkLight
     
 ### Example #4:  adding scope with _occurs
 It's now easy to add scopes with using _occurs, which will generate your where statement for you.
-
-   scope :red,   where(WalkLight.color_state_red_occurs )     # => "(status_option ='R')"
-   scope :green, where(WalkLight.color_state_green_occurs )   # => "(status_option ='G')"   
+    scope :red,   where(WalkLight.color_state_red_occurs )     # => "(color_state ='R')"
+    scope :green, where(WalkLight.color_state_green_occurs )   # => "(color_state ='G')"   
     
 ## Contributing
 
