@@ -67,11 +67,12 @@ class StateObjectsTest < Test::Unit::TestCase
     assert target.color_state_red?
   end
 
-  def test_state_objects_occurs
-    assert_equal "(status_option ='G')", LightGreenState.occurs
-    assert_equal "(status_option ='R')", LightRedState.occurs
+  def test_occurs
+    target =  @model.new
+    assert_equal "(color_state ='G')", @model.color_state_green_occurs
+    assert_equal "(color_state ='R')", @model.color_state_red_occurs
   end
-
+                              
   def test_state_objects_db_value
     assert_equal 'G', LightGreenState.db_value
     assert_equal 'R', LightRedState.db_value

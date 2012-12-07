@@ -2,7 +2,7 @@ module StateObjects
   class Base
 
     def initialize(model)
-      @model = model
+      @model = model               
     end
 
     def self.state_object_values(*opts)  # :nodoc:
@@ -12,9 +12,6 @@ module StateObjects
         end
         def self.db_value
           '#{opts[1]}'
-        end
-        def self.occurs
-          "(status_option ='#{opts[1]}')"
         end
         def self.label
           '#{opts[2]}'

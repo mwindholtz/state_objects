@@ -64,6 +64,7 @@ module StateObjects
         def #{id}_symbol
           #{id}_state_klass.symbol
         end
+
       EOF
       opts.each do |option_klass|
         [:symbol, :label, :db_value].each do |required_method|
@@ -85,6 +86,9 @@ module StateObjects
           end
           def #{id}_#{option_klass.symbol}!
             self.#{id} = '#{letter}'
+          end
+          def self.#{id}_#{option_klass.symbol}_occurs
+            "(#{id} ='#{letter}')"
           end
         EOF2
       end # opts.each

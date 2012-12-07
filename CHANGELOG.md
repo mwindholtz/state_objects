@@ -1,5 +1,9 @@
+## 0.0.6
+* adding scope with _occurs.  For example:
+  scope :red,   where(WalkLight.color_state_red_occurs )     # => "(status_option ='R')"  
+
 ## v0.0.5
-*  Added StateObjects#occurs
+*  (Yanked)
 
 ## v0.0.4
 * Changed Gem description to focus state that Many other state machines focus on events and state transitions.

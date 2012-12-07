@@ -118,11 +118,11 @@ adds the following INSTANCE METHODS to WalkLight
         <%=  radio_button :walk_light, :color_state, key %> <%= value %><br />
     <% end %>
     
-### Example #4:  adding scope with #occurs
-It's now easy to add scopes with using StateObjects#occurs, which will generate your where statement for you.
+### Example #4:  adding scope with _occurs
+It's now easy to add scopes with using _occurs, which will generate your where statement for you.
 
-   scope :red,   where(LightRedState.occurs )     # => "(status_option ='R')"
-   scope :green, where(LightGreenState.occurs )   # => "(status_option ='G')"      
+   scope :red,   where(WalkLight.color_state_red_occurs )     # => "(status_option ='R')"
+   scope :green, where(WalkLight.color_state_green_occurs )   # => "(status_option ='G')"   
     
 ## Contributing
 
