@@ -131,3 +131,6 @@ It's now easy to add scopes with using _occurs, which will generate your where s
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Thanks To
+* Scott Baron - for helping with the unit tests.

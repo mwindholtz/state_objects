@@ -9,7 +9,7 @@ class LightGreenState  < StateObjects::Base
   state_object_values :green, 'G', 'Walk' 
 end        
 
-class ModelUnderTest < SuperModel::Base
+class MissingEventExModelUnderTest < SuperModel::Base
   extend StateObjects::ModelAdditions
   state_objects :color_state,
      LightGreenState
@@ -27,15 +27,15 @@ class ModelUnderTest < SuperModel::Base
 
 end
 
-class TranslateOptionsForExTest < Test::Unit::TestCase
+class MissingEventExTest < Test::Unit::TestCase
   def setup
-    @model  = ModelUnderTest
+    @model  = MissingEventExModelUnderTest
   end
 
   def test_exception_missing_event
-    assert_equal RuntimeError, ModelUnderTest.exception_missing_event.class
+    assert_equal RuntimeError, MissingEventExModelUnderTest.exception_missing_event.class
     assert_equal "Invalid state class LightGreenState must implement #missing_event",
-                  ModelUnderTest.exception_missing_event.message
+                  MissingEventExModelUnderTest.exception_missing_event.message
   end 
 
 end
