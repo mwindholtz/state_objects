@@ -20,8 +20,9 @@ Gem::Specification.new do |gem|
   
   # gem.add_development_dependency "supermodel" # TODO  
   # gem.add_development_dependency "activerecord"
-  gem.add_development_dependency "supermodel"
-  gem.add_development_dependency "rspec-given"
-  gem.add_runtime_dependency     "activerecord"
+  gem.add_development_dependency 'supermodel'
+  gem.add_development_dependency 'rspec-given'
+  gem.add_development_dependency 'ghpreview'
+  gem.add_runtime_dependency     'activerecord'
   
 end
