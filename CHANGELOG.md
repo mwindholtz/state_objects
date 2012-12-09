@@ -1,3 +1,6 @@
+## 0.0.8
+  Additional tests ported from selection_options gem
+
 ## 0.0.7
   Fixed typos
   
