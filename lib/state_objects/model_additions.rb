@@ -69,7 +69,7 @@ module StateObjects
       opts.each do |option_klass|
         [:symbol, :label, :db_value].each do |required_method|
           unless option_klass.respond_to?(required_method) 
-            raise "Invalid State class ["+ option_klass.to_s + "]. Must implement a class method named: ##{required_method}.  I suggest using #state_object_values"
+            raise "Invalid State class ["+ option_klass.to_s + "]. Must implement a class method named: ##{required_method}.  Use #state_object_values to setup StateObject"
           end          
         end
         
