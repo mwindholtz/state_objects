@@ -8,15 +8,11 @@ require 'test_helper'
 class NoStateObjectValues < StateObjects::Base
 end
 
-class MissingStateObjectValues < StateObjects::Base
-  state_object_values :green, 'G'
-end
-
 class ModelUnderTest < SuperModel::Base
   extend StateObjects::ModelAdditions
     
   begin                                             
-    state_objects :color_state,
+    state_objects :no_state,
        NoStateObjectValues    
   rescue RuntimeError => ex
     @@ex_no_state_values = ex
@@ -28,7 +24,7 @@ class ModelUnderTest < SuperModel::Base
 
 end
 
-class TranslateOptionsForExTest < Test::Unit::TestCase
+class StateObjectValuesTest < Test::Unit::TestCase
   def setup
     @model  = ModelUnderTest
   end
