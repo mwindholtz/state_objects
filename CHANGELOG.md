@@ -1,3 +1,6 @@
+## 0.9.0
+* This code has been running in multiple applications for multiple years. So it's time to reflect by bumping up the version number.  
+
 ## 0.0.8
   Additional tests ported from selection_options gem
 

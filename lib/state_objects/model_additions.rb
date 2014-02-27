@@ -50,7 +50,10 @@ module StateObjects
         end
 
         def #{id}_state_klass
-          self.#{id_klasses}[self.#{id}]
+          unless result = self.#{id_klasses}[self.#{id}]
+            raise #{id} + " was not a valid state in: " +  self.#{id_klasses}.keys.join(', ') 
+          end  
+          result
         end            
 
         def #{id}_state
