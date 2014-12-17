@@ -29,7 +29,7 @@ Or install it yourself as:
 ## Usage
 
     class WalkLights < ActiveRecord::Migration
-      def self.change
+      def change
         create_table :walk_lights do |t|
           t.string :color_state, :default => LightRedState.db_value
         end
@@ -58,8 +58,8 @@ Or install it yourself as:
          LightRedState 
       state_object_events :color_state, :change
                                                                                        
-      scope :red,   where(LightRedState.occurs )    
-      scope :green, where(LightGreenState.occurs )    
+      scope :red,   where(WalkLight.color_state_red_occurs )    
+      scope :green, where(WalkLight.color_state_green_occurs ) 
     end
 
     # now lets use it 

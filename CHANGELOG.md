@@ -1,3 +1,6 @@
+## 0.9.1
+* Fixed typos in the example code. 
+
 ## 0.9.0
 * This code has been running in multiple applications for multiple years. So it's time to reflect by bumping up the version number.  
 
