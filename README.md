@@ -11,6 +11,7 @@ Many other state machines focus on events and state transitions.
 This state machine focuses on behavior.
 The main benefit of this gem is to reduce conditional logic by removing #if checks in the model and moving the logic into the state objects. Using Composition in this way can go a long way to simplify Rails models.
 
+This gem works well with ActiveRecord classes, however ActiveRecord is not required.  It can manage the state of regular Ruby objects as well.
 
 ## Installation
 
@@ -133,4 +134,4 @@ It's now easy to add scopes with using _occurs, which will generate your where s
 5. Create new Pull Request
 
 ## Thanks To
-* Scott Baron - for helping with the unit tests.
+* Scott Baron (https://github.com/rubyist) - for helping with the unit tests.

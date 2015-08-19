@@ -1,3 +1,7 @@
+## 0.9.2
+* changed library to raise StateObjects::Error instead of RuntimeError
+* Documentation update
+
 ## 0.9.1
 * Fixed typos in the example code. 
 
