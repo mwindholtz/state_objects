@@ -3,14 +3,14 @@ module StateObjects
     
     def state_object_events(id,*methods)  # :nodoc:
       unless self.respond_to?("#{id}_klasses")
-        raise "Invalid call sequence. #state_objects must be defined before #state_object_events"
+        raise StateObjects::Error.new "Invalid call sequence. #state_objects must be defined before #state_object_events"
       end                     
 
       # check methods on State classes      
       self.send("#{id}_states").each do |klass|
         methods.each do |method|
           unless klass.new(nil).respond_to?(method)
-            raise "Invalid state class #{klass} must implement ##{method}"
+            raise StateObjects::Error.new "Invalid state class #{klass} must implement ##{method}"
           end                     
         end
       end
@@ -51,7 +51,7 @@ module StateObjects
 
         def #{id}_state_klass
           unless result = self.#{id_klasses}[self.#{id}]
-            raise #{id} + " was not a valid state in: " +  self.#{id_klasses}.keys.join(', ') 
+            raise StateObjects::Error.new #{id} + " was not a valid state in: " +  self.#{id_klasses}.keys.join(', ') 
           end  
           result
         end            
@@ -72,14 +72,14 @@ module StateObjects
       opts.each do |option_klass|
         [:symbol, :label, :db_value].each do |required_method|
           unless option_klass.respond_to?(required_method) 
-            raise "Invalid State class ["+ option_klass.to_s + "]. Must implement a class method named: ##{required_method}.  Use #state_object_values to setup StateObject"
+            raise StateObjects::Error.new "Invalid State class ["+ option_klass.to_s + "]. Must implement a class method named: ##{required_method}.  Use #state_object_values to setup StateObject"
           end          
         end
         
         letter       = option_klass.db_value
         display_text = option_klass.label
         if(send(id_klasses).has_key?(letter))
-          raise "Duplicate key during state_objects :" + id + ".  key: " + 
+          raise StateObjects::Error.new "Duplicate key during state_objects :" + id + ".  key: " + 
                  letter + ' for text: ' + display_text
         end
         send(id_klasses)[letter] = option_klass

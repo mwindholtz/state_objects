@@ -1,4 +1,8 @@
 module StateObjects
+  
+  class Error < RuntimeError
+  end
+  
   class Base
 
     def initialize(model)
@@ -7,7 +11,7 @@ module StateObjects
 
     def self.state_object_values(*opts)  # :nodoc:          
       unless opts.size == 3
-        raise @model.to_s + "#state_object_values Must have 3 arguments: symbol, db_value, label.  For Example: state_object_values :red,'R','Dont Walk'"
+        raise StateObjects::Error.new @model.to_s + "#state_object_values Must have 3 arguments: symbol, db_value, label.  For Example: state_object_values :red,'R','Dont Walk'"
       end
       
       class_eval <<-EOF

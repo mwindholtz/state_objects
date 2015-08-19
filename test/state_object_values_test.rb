@@ -14,7 +14,7 @@ class ModelUnderTest < SuperModel::Base
   begin                                             
     state_objects :no_state,
        NoStateObjectValues    
-  rescue RuntimeError => ex
+  rescue StateObjects::Error => ex
     @@ex_no_state_values = ex
   end
 
@@ -30,7 +30,7 @@ class StateObjectValuesTest < Test::Unit::TestCase
   end
 
   def test_no_state_values
-    assert_equal RuntimeError, ModelUnderTest.ex_no_state_values.class
+    assert_equal StateObjects::Error, ModelUnderTest.ex_no_state_values.class
     assert_equal "Invalid State class [NoStateObjectValues]. Must implement a class method named: #symbol.  Use #state_object_values to setup StateObject",
                   ModelUnderTest.ex_no_state_values.message
   end

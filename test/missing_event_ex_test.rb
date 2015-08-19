@@ -17,7 +17,7 @@ class MissingEventExModelUnderTest < SuperModel::Base
   begin 
     state_object_events :color_state, :missing_event
                                                                                    
-  rescue RuntimeError => ex
+  rescue StateObjects::Error => ex
     @@exception_missing_event = ex
   end
 
@@ -33,7 +33,7 @@ class MissingEventExTest < Test::Unit::TestCase
   end
 
   def test_exception_missing_event
-    assert_equal RuntimeError, MissingEventExModelUnderTest.exception_missing_event.class
+    assert_equal StateObjects::Error, MissingEventExModelUnderTest.exception_missing_event.class
     assert_equal "Invalid state class LightGreenState must implement #missing_event",
                   MissingEventExModelUnderTest.exception_missing_event.message
   end 
